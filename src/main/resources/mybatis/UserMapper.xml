@@ -3,9 +3,9 @@
 <mapper namespace="com.test.data.dao.UserMapper">
     <resultMap id="userResultMap" type="com.test.data.model.User">
         <id property="id" column="id"/>
-        <result property="userName" column="user_name"/>
-        <result property="loginName" column="login_name"/>
-        <result property="loginPwd" column="login_pwd"/>
+        <result property="userName" column="username"/>
+        <result property="loginName" column="loginname"/>
+        <result property="loginPwd" column="loginpwd"/>
         <result property="salt" column="salt"/>
     </resultMap>
 
@@ -22,13 +22,13 @@
                 and `id`=#{id}
             </if>
             <if test="userName!=null">
-                and `user_name`=#{userName}
+                and `username`=#{userName}
             </if>
-            <if test="login_name!=null">
-                and `login_name`=#{loginName}
+            <if test="loginname!=null">
+                and `loginname`=#{loginName}
             </if>
-            <if test="login_pwd!=null">
-                and `login_pwd`=#{loginPwd}
+            <if test="loginpwd!=null">
+                and `loginpwd`=#{loginPwd}
             </if>
             <if test="salt!=null">
                 and `salt`=#{salt}
@@ -43,14 +43,14 @@
             <if test="id!=null">
                 and `id`=#{id}
             </if>
-            <if test="user_name!=null">
-                and `user_name`=#{userName}
+            <if test="username!=null">
+                and `username`=#{userName}
             </if>
-            <if test="login_name!=null">
-                and `login_name`=#{loginName}
+            <if test="loginname!=null">
+                and `loginname`=#{loginName}
             </if>
-            <if test="login_pwd!=null">
-                and `login_pwd`=#{loginPwd}
+            <if test="loginpwd!=null">
+                and `loginpwd`=#{loginPwd}
             </if>
             <if test="salt!=null">
                 and `salt`=#{salt}
@@ -66,23 +66,23 @@
         insert into `user` (
         <trim suffix=")" suffixOverrides=",">
             <if test="id!=null">`id`</if>
-            <if test="user_name!=null">`user_name`</if>
-            <if test="login_name!=null">login_name</if>
-            <if test="login_pwd!=null">login_pwd</if>
+            <if test="username!=null">`username`</if>
+            <if test="loginname!=null">loginname</if>
+            <if test="loginpwd!=null">loginpwd</if>
             <if test="salt!=null">salt</if>
         </trim>
         VALUES (
         <trim suffix=")" suffixOverrides=",">
             <if test="id!=null">#{id}</if>
-            <if test="user_name!=null">#{userName}</if>
-            <if test="login_name!=null">#{loginName}</if>
-            <if test="login_pwd!=null">#{loginPwd}</if>
+            <if test="username!=null">#{userName}</if>
+            <if test="loginname!=null">#{loginName}</if>
+            <if test="loginpwd!=null">#{loginPwd}</if>
             <if test="salt">#{salt}</if>
         </trim>
     </insert>
 
     <insert id="insertBatch" useGeneratedKeys="true" keyColumn="id">
-        insert into `user` (id,user_name,login_name,login_pwd,salt) values
+        insert into `user` (id,username,loginname,loginpwd,salt) values
         <foreach collection="list" item="item" separator=",">
             (#{item.id},#{item.userName},#{item.loginName},#{item.loginPwd},#{salt})
         </foreach>
@@ -92,9 +92,9 @@
         update `user`
         <set>
             <if test="id!=null">`id`=#{id}</if>
-            <if test="user_name!=null">`user_name`=#{userName}</if>
-            <if test="login_name!=null">`login_name`=#{loginName}</if>
-            <if test="login_pwd!=null">`login_pwd`=#{loginPwd}</if>
+            <if test="username!=null">`username`=#{userName}</if>
+            <if test="loginname!=null">`loginname`=#{loginName}</if>
+            <if test="loginpwd!=null">`loginpwd`=#{loginPwd}</if>
             <if test="salt">`salt`=#{salt}</if>
         </set>
     </update>
